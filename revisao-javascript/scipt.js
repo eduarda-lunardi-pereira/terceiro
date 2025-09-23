@@ -43,15 +43,12 @@ console.log("A soma de a e b é: " + (a + b));
 let nomeCompleto = "Joana dos Santos";
 let idadeAtual = 58;
 
-// Usando o operador de soma (+)
 let mensagem1 = "O nome dela é " + nomeCompleto + " e ela tem " + idadeAtual + " anos.";
 console.log(mensagem1);
 
-// Usando template string (com `)
 let mensagem2 = `O nome dela é ${nomeCompleto} e ela tem ${idadeAtual} anos.`;
 console.log(mensagem2);
 
-// Usando vírgulas no console.log
 console.log("O nome dela é", nomeCompleto, "e ela tem", idadeAtual, "anos.");
 
 // --- Parte 6: Atualizando valores ---
@@ -64,7 +61,6 @@ console.log("Saldo após a soma:", saldo);
 saldo = saldo - 30;
 console.log("Saldo após a subtração:", saldo);
 
-// Exibindo o valor final com uma frase
 console.log("O valor final do saldo é: " + saldo);
 
 // --- Parte 7: Mini-programa de apresentação ---
