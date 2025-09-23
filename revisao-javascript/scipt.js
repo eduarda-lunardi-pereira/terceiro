@@ -1,6 +1,6 @@
 // --- Parte 1: Explorando o console.log ---
 console.log("Olá, mundo!");
-console.log(10 + 5);
+console.log(10 + 7);
 console.log("Minha idade é " + 17);
 
 // --- Parte 2: Criando variáveis ---
