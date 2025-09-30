@@ -167,3 +167,45 @@ switch (opcao) {
         console.log("Opção inválida.");
         break;
 }
+
+// --- Parte 9 ---
+const senhaCorreta = "abc123";
+let tentativa = "abc123";
+
+if (tentativa === senhaCorreta) {
+    console.log("Acesso permitido! Bem-vindo(a).");
+} else {
+    console.log("Acesso negado. Restam 2 tentativas.");
+}
+
+// --- Parte 10 ---
+let num1 = 15;
+let num2 = 0; 
+let operacao = "divisao";
+let resultado;
+
+switch (operacao) {
+    case "soma":
+        resultado = num1 + num2;
+        console.log(`Resultado da Soma é: ${resultado}`);
+        break;
+    case "subtracao":
+        resultado = num1 - num2;
+        console.log(`Resultado da Subtração é: ${resultado}`);
+        break;
+    case "multiplicacao":
+        resultado = num1 * num2;
+        console.log(`Resultado da Multiplicação é: ${resultado}`);
+        break;
+    case "divisao":
+        if (num2 === 0) {
+            console.log("Erro: divisão por zero não é permitida.");
+        } else {
+            resultado = num1 / num2;
+            console.log(`Resultado da Divisão é: ${resultado}`);
+        }
+        break;
+    default:
+        console.log("Erro: Operação inválida.");
+        break;
+}
