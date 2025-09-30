@@ -209,3 +209,4 @@ switch (operacao) {
         console.log("Erro: Operação inválida.");
         break;
 }
+console.log("O resultado da operacao"+ operacao+"é "+resultado);
