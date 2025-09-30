@@ -170,7 +170,7 @@ switch (opcao) {
 
 // --- Parte 9 ---
 const senhaCorreta = "abc123";
-let tentativa = "abc123";
+let tentativa = "abc223";
 
 if (tentativa === senhaCorreta) {
     console.log("Acesso permitido! Bem-vindo(a).");
