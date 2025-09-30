@@ -179,7 +179,7 @@ if (tentativa === senhaCorreta) {
 }
 
 // --- Parte 10 ---
-let num1 = 15;
+let num1 = 25;
 let num2 = 0; 
 let operacao = "divisao";
 let resultado;
