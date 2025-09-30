@@ -2,7 +2,7 @@
 let curso = "JavaScript";
 let aluno= "Eduarda";
 
-let mensagem1 ="O aluno" + aluno + "está aprendendo" + curso + "JavaScript.";
+let mensagem1 ="O aluno " + aluno + "está aprendendo " + curso + "JavaScript.";
 console.log(mensagem1);
 
 let mensagem2 = `O aluno ${aluno} está aprendendo ${curso} `;
