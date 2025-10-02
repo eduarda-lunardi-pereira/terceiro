@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Click do Bem</title>
+  <link rel="shortcut icon" href="./assets/images/logonova.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./assets/images/logo.svg" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <!-- CADASTRO -->
+  <section class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="card shadow-lg p-5" style="max-width: 500px; width: 100%;">
+      <h2 class="text-center mb-4">Criar Conta</h2>
+      <input type="email" id="cadEmail" class="form-control mb-3" placeholder="Email">
+      <input type="password" id="cadSenha" class="form-control mb-3" placeholder="Senha">
+      <button id="btnCadastro" class="btn btn-light w-100">Cadastrar</button>
+
+      <p class="text-center mt-3">Já tem conta? 
+        <a href="login.html">Entre aqui</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAYZsqcE0hNnE1CFYUWwGbqP1l9pGsS0xs",
+      authDomain: "click-do-bem-99516.firebaseapp.com",
+      projectId: "click-do-bem-99516",
+      storageBucket: "click-do-bem-99516.firebasestorage.app",
+      messagingSenderId: "562779049863",
+      appId: "1:562779049863:web:2cddaf4c417de324284d22",
+      measurementId: "G-PLNSJJN28V"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Cadastro
+    document.getElementById("btnCadastro").addEventListener("click", async () => {
+      const email = document.getElementById("cadEmail").value;
+      const senha = document.getElementById("cadSenha").value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+        const user = userCredential.user;
+        await setDoc(doc(db, "usuarios", user.uid), {
+          email: email,
+          criadoEm: new Date()
+        });
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "login.html"; 
+      } catch (error) {
+        alert("Erro: " + error.message);
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
