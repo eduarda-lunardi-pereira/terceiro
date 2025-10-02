@@ -9,105 +9,83 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
+
+ <script type="module">
+  // Importa o Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+          from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc } 
+          from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // 🔑 Configuração do Firebase (substitua pelos seus dados do console Firebase)
+const firebaseConfig = {
+  apiKey: "AIzaSyAYZsqcE0hNnE1CFYUWwGbqP1l9pGsS0xs",
+  authDomain: "click-do-bem-99516.firebaseapp.com",
+  projectId: "click-do-bem-99516",
+  storageBucket: "click-do-bem-99516.firebasestorage.app",
+  messagingSenderId: "562779049863",
+  appId: "1:562779049863:web:2cddaf4c417de324284d22",
+  measurementId: "G-PLNSJJN28V"
+};
+
+  // Inicializa Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Cadastro de usuário
+  document.getElementById("btnCadastro").addEventListener("click", async () => {
+    const email = document.getElementById("cadEmail").value;
+    const senha = document.getElementById("cadSenha").value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+      const user = userCredential.user;
+
+      // Salva dados adicionais no Firestore
+      await setDoc(doc(db, "usuarios", user.uid), {
+        email: email,
+        criadoEm: new Date()
+      });
+
+      alert("Cadastro realizado com sucesso!");
+    } catch (error) {
+      alert("Erro: " + error.message);
+    }
+  });
+
+  // Login de usuário
+  document.getElementById("btnLogin").addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail").value;
+    const senha = document.getElementById("loginSenha").value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
+      alert("Login realizado com sucesso!");
+      window.location.href = "doar.html"; // redireciona após login
+    } catch (error) {
+      alert("Erro: " + error.message);
+    }
+  });
+</script>
+
 <body>
-    <div class="container">
-        <div class="content first-content">
-            <div class="first-column">
-                <h2 class="title title-primary">welcome back!</h2>
-                <p class="description description-primary">To keep connected with us</p>
-                <p class="description description-primary">please login with your personal info</p>
-                <button id="signin" class="btn btn-primary">sign in</button>
-            </div>    
-            <div class="second-column">
-                <h2 class="title title-second">create account</h2>
-                <div class="social-media">
-                    <ul class="list-social-media">
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-facebook-f"></i>        
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-google-plus-g"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-linkedin-in"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div><!-- social media -->
-                <p class="description description-second">or use your email for registration:</p>
-                <form class="form">
-                    <label class="label-input" for="">
-                        <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Name">
-                    </label>
+       <!-- Formulário de Cadastro -->
+<div>
+  <h2>Cadastrar</h2>
+  <input type="email" id="cadEmail" placeholder="Email">
+  <input type="password" id="cadSenha" placeholder="Senha">
+  <button id="btnCadastro">Cadastrar</button>
+</div>
+
+<!-- Formulário de Login -->
+<div>
+  <h2>Login</h2>
+  <input type="email" id="loginEmail" placeholder="Email">
+  <input type="password" id="loginSenha" placeholder="Senha">
+  <button id="btnLogin">Entrar</button>
+</div>
                     
-                    <label class="label-input" for="">
-                        <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password">
-                    </label>
-                    
-                    
-                    <button class="btn btn-second">sign up</button>        
-                </form>
-            </div><!-- second column -->
-        </div><!-- first content -->
-        <div class="content second-content">
-            <div class="first-column">
-                <h2 class="title title-primary">hello, friend!</h2>
-                <p class="description description-primary">Enter your personal details</p>
-                <p class="description description-primary">and start journey with us</p>
-                <button id="signup" class="btn btn-primary">sign up</button>
-            </div>
-            <div class="second-column">
-                <h2 class="title title-second">sign in to developer</h2>
-                <div class="social-media">
-                    <ul class="list-social-media">
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-facebook-f"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-google-plus-g"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-linkedin-in"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div><!-- social media -->
-                <p class="description description-second">or use your email account:</p>
-                <form class="form">
-                
-                    <label class="label-input" for="">
-                        <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
-                    </label>
-                
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password">
-                    </label>
-                
-                    <a class="password" href="#">forgot your password?</a>
-                    <button class="btn btn-second">sign in</button>
-                </form>
-            </div><!-- second column -->
-        </div><!-- second-content -->
-    </div>
-    <script src="js/script.js"></script>
 </body>
 </html>
