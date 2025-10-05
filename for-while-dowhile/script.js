@@ -21,16 +21,21 @@ while (contador<20){
 }
 
 // Exercícios sobre Do/While
-let senha = 1234
-let tentativa=""
-do{
-  console.log ("digite sua senha");
-  tentativa = "errado";
-  if (tentativa == "errado") {
-      tentativa = "1235"; 
+const senha_correta = "1234";
+let tentativa = "";
+
+do {
+  console.log("Digite sua senha:");
+  
+  if (tentativa !== senha_correta) {
+      tentativa = "1235";
+      console.log(`Senha digitada: ${tentativa}`);
+      if (tentativa !== senha_correta) {
+          console.log ("Senha incorreta. Tentando outra vez...");
+      }
+  } else {
+      tentativa = senhas_correta;
   }
-}
- 
-while (tentativa !==1234){
-  console.log("Acesso permitido!");
-}
+  
+} while (tentativa !== senha_correta);
+console.log ("Acesso permitido");
