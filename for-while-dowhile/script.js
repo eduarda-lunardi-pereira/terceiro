@@ -38,8 +38,4 @@ do {
   }
   
 } while (tentativa !== senha_correta);
-<<<<<<< HEAD
 console.log ("Acesso permitido");
-=======
-console.log ("Acesso permitido");
->>>>>>> 21565305bdf69cad51846d070d9ed138e1828be1
