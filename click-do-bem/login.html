@@ -60,7 +60,7 @@
       const senha = document.getElementById("loginSenha").value;
       try {
         await signInWithEmailAndPassword(auth, email, senha);
-        alert("Login realizado com sucesso!");
+        alert("Bem vindo(a) de volta!");
         window.location.href = "doar.html"; 
       } catch (error) {
         alert("Erro: " + error.message);
