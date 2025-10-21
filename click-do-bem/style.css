@@ -147,6 +147,53 @@ img {
     flex: none;
 }
 
+/* === PARCEIROS (CARROSSEL CONTÍNUO) === */
+.logos-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: #f8f9fa;
+  padding: 20px 0;
+}
+
+.logos-slide {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.logos-slide img {
+  height: 80px;
+  margin: 0 40px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.logos-slide img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .logos-slide img {
+    height: 60px;
+    margin: 0 20px;
+  }
+}
+
+
 /* FOOTER */
 footer {
     padding-top: 120px;
